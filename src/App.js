@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { questions } from './data/questionsData.json'
+import Question from './components/Question'
 
-function App() {
+const App = () => {
+
+  const mappedQuestions = questions.map(question => {
+    return(
+      <Question 
+        key={question.number} 
+        questionNumber={question.number}
+        title={question.title}
+        questionText={question.questionText}
+      />
+    )
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      App
+      {mappedQuestions}
     </div>
   );
 }
