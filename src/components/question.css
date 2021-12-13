@@ -20,7 +20,6 @@
 .question-text {
     color: #363f4f;
     white-space: pre-line;
-    /* word-wrap: break-word; */
     overflow-wrap: break-word;
 }
 
@@ -41,6 +40,6 @@
     cursor: pointer;
 }
 .run-button:hover{
-    background-color: #813772;
+    background-color: #810032;
 }
 
