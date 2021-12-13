@@ -291,3 +291,80 @@ export const Solution11 = () => {
     const result = greatestProduct
     return result
 }
+
+
+const getAllPrimes = (n) => {
+    let array = [] 
+    let upperLimit = Math.sqrt(n)
+    let primeNumbers = []
+
+    //* Create starting array with all booleans being set to 'prime = true'
+    for (var i = 0; i < n; i++) {
+        array.push(true);
+    }
+
+    //* Remove multiples of primes starting from 2, 3, 5, 7, etc
+    for (let i = 2; i <= upperLimit; i++) {
+        if (array[i]) {
+            for (let j = i * i; j < n; j += i) {
+                array[j] = false;
+            }
+        }
+    }
+
+    //* All array indexes left to true are primes, add them to the sum
+    for (let i = 2; i < n; i++) {
+        if(array[i]) primeNumbers.push(i)
+    }
+
+    return primeNumbers
+}
+
+//* Integer factorization with the congruence of squares seems to be the most efficient way of solving this
+export const Solution12 = () => {
+    //! The below code works but is only efficent up to numbers with 300 factors
+    const requestedFactors = 100
+    let count = 3
+    let startingNum = 3  //* (triangle value)
+    let totalFactorsCount = 0
+
+    while(true){
+        startingNum += count
+        //* Get all the prime numbers
+        const allPrimes = getAllPrimes(startingNum)
+
+        //* Obtain the Prime factors of the Prime numbers
+        let primeFactors = [startingNum]
+        for(let i = 0; i < allPrimes.length; i++){
+            let divisor = startingNum
+            let primeNum = allPrimes[i]
+            if(primeNum * primeNum > startingNum) break; // all numbers greater than half the starting number will never be a factor
+            while(divisor % primeNum === 0){
+                divisor = divisor / primeNum // Divide result by same prime factor until no more are found
+                primeFactors.push(divisor)
+            }
+            // repeat with all prime factors
+        }
+
+        //** Gets all the factors of the Prime Factors
+        let factors = [1, ...primeFactors ]
+        for(let i=0; i < primeFactors.length; i++){
+            let num = primeFactors[i]
+            // Only need to go to the square root since that will include all factors
+            for(let j = 2; j <= Math.sqrt(num); j++){
+                if (num % j === 0){
+                    let jFactor = num /j
+                    if(!factors.includes(j))  factors.push(j)
+                    if(startingNum % jFactor === 0){
+                        if(!factors.includes(jFactor)) factors.push(jFactor)
+                    }
+                }
+            }
+        }
+
+        totalFactorsCount = factors.length
+        if(totalFactorsCount > requestedFactors) break;
+        count++
+    }
+    return startingNum
+}
