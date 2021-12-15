@@ -547,3 +547,15 @@ export const Solution13 = () => {
     const result = runningTotal.slice(0,10)
     return result
 }
+
+
+
+export const Solution14 = () => {
+    return 'Not Built Yet...'
+}
+
+
+
+export const Solution15 = () => {
+    return 'Not Built Yet...'
+}

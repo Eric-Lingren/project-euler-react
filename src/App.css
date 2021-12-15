@@ -7,3 +7,12 @@
   align-content: center;
   align-items: center;
 }
+
+.project-description-wrapper{
+  color: white;
+  width: 80%;
+}
+
+a {
+  color: cornflowerblue;
+}
