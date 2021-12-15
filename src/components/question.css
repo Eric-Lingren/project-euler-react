@@ -21,6 +21,7 @@
     color: #363f4f;
     white-space: pre-line;
     overflow-wrap: break-word;
+    font-size: 20px;
 }
 
 .button-container {
@@ -36,7 +37,7 @@
     color: white;
     height: 35px;
     width: 100px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
 }
 .run-button:hover{
