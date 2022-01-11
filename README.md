@@ -8,4 +8,5 @@ Please note that some of the answers may take some time to generate.  According 
 
 
 [Live Site Here](https://zealous-turing-45f02b.netlify.app/)
+<a href="https://zealous-turing-45f02b.netlify.app/" target="_blank">Live Site Here</a>
         
